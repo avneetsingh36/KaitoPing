@@ -1,3 +1,4 @@
+#include<openai/openai.hpp>
 #include<iostream>
 
 int main() 

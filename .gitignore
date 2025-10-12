@@ -1,0 +1,32 @@
+# Build outputs (out-of-source builds)
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+
+# Compiled artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.pdb
+*.dSYM/
+
+# Local config / secrets
+.env
+*.local
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Misc
+*.swp
+

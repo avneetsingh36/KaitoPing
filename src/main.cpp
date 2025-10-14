@@ -21,6 +21,8 @@ int main()
     // makes the HTTP call through client wrapper
     openai::Json res = openai::chat().create(req);
 
+    std::cout << res.dump(2) << '\n';
+
 
   } catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << '\n';

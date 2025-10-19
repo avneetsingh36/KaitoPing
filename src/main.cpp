@@ -1,5 +1,6 @@
 #include<openai/openai.hpp>
 #include<iostream>
+#include<format>
 
 int main() 
 {
@@ -23,6 +24,12 @@ int main()
 
     std::cout << res.dump(2) << '\n';
 
+    if (!res.contains("choices") || res["choices"].empty())
+      throw std::runtime_error("No choices returned");
+    
+    std::cout << std::format("Model: {}", res["model"].get<std::string>()) << '\n';
+    std::cout << std::format("Message: {}", res["choices"][0]["message"]["content"].get<std::string>()) << '\n';
+    
 
 
   } catch (const std::exception& e) {

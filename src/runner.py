@@ -2,7 +2,8 @@ import subprocess
 
 def run_cpp() -> list:
     out = []
-    res = subprocess.run(["./main_executable"], capture_output=True, text=True, check=True)
+    message = "You just respond with just 'TEST' for now."
+    res = subprocess.run(["./main_executable", message], capture_output=True, text=True, check=True)
     for line in res.stdout.splitlines():
         out.append(line)
 

@@ -47,7 +47,6 @@ int main(int argc, char* argv[])
 
   std::string instr = argv[1];
   std::string message = argv[2];
-  std::cout << message << '\n';
 
   run(instr, message);
 

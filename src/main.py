@@ -5,7 +5,7 @@ def run_cpp() -> list:
 
     instructions = "You are a helpful assistant."
     message = "What is your name?"
-    res = subprocess.run(["./api/main_executable", instructions, message], capture_output=True, text=True, check=True)
+    res = subprocess.run(["../build/main_executable", instructions, message], capture_output=True, text=True, check=True)
     for line in res.stdout.splitlines():
         out.append(line)
 

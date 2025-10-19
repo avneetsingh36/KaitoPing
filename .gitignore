@@ -4,6 +4,7 @@ build-*/
 CMakeCache.txt
 CMakeFiles/
 cmake-build-*/
+build.md
 
 # Compiled artifacts
 *.o

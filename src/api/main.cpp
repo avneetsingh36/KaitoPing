@@ -4,7 +4,7 @@
 #include<string>
 #include <string_view>
 
-void run(const std::string& message){
+void run(const std::string& instr, const std::string& message){
   try {
     // initializes the client wrapper with the read in API key from my local .env
     openai::start();
@@ -14,7 +14,7 @@ void run(const std::string& message){
     openai::Json req {
       {"model", "gpt-5"},
       {"messages", openai::Json::array({
-          {{"role", "system"}, {"content", "You are a helpful assistant."}},
+          {{"role", "system"}, {"content", instr}},
           {{"role", "user"}, {"content", message}}
           })}
     };
@@ -40,15 +40,16 @@ void run(const std::string& message){
 
 int main(int argc, char* argv[]) 
 {
-  if (argc != 2){
-    std::cout << "You didn't input a message.";
+  if (argc != 3){
+    std::cout << "You didn't input a message or instruction.";
     return 1;
   }
 
-  std::string message = argv[1];
+  std::string instr = argv[1];
+  std::string message = argv[2];
   std::cout << message << '\n';
 
-  run(message);
+  run(instr, message);
 
   return 0;
 }

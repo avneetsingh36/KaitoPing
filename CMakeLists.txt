@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find libcurl (the HTTP engine the wrapper uses under the hood)
 find_package(CURL REQUIRED)
 
-add_executable(main_executable src/main.cpp)
+add_executable(main_executable src/api/main.cpp)
 
 # - "openai/openai.hpp" via ${PROJECT_ROOT}/external
 # - "nlohmann/json.hpp" via ${PROJECT_ROOT}/external/openai

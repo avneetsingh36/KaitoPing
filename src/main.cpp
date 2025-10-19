@@ -22,7 +22,8 @@ int main()
     // makes the HTTP call through client wrapper
     openai::Json res = openai::chat().create(req);
 
-    std::cout << res.dump(2) << '\n';
+    // uncomment if you want to see the entire json response
+    // std::cout << res.dump(2) << '\n';
 
     if (!res.contains("choices") || res["choices"].empty())
       throw std::runtime_error("No choices returned");

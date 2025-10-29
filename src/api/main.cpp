@@ -4,7 +4,7 @@
 #include<string>
 #include <string_view>
 
-void run(const std::string& instr, const std::string& message){
+void run(const std::string& instr, const std::string& msg){
   try {
     // initializes the client wrapper with the read in API key from my local .env
     openai::start();
@@ -15,21 +15,24 @@ void run(const std::string& instr, const std::string& message){
       {"model", "gpt-5"},
       {"messages", openai::Json::array({
           {{"role", "system"}, {"content", instr}},
-          {{"role", "user"}, {"content", message}}
+          {{"role", "user"}, {"content", msg}}
           })}
     };
 
     // makes the HTTP call through client wrapper
     openai::Json res = openai::chat().create(req);
 
-    // uncomment if you want to see the entire json response
+    // uncomment below if you want to see the entire json response
     // std::cout << res.dump(2) << '\n';
 
     if (!res.contains("choices") || res["choices"].empty())
       throw std::runtime_error("No choices returned");
     
-    std::cout << std::format("Model: {}", res["model"].get<std::string>()) << '\n';
-    std::cout << std::format("Message: {}", res["choices"][0]["message"]["content"].get<std::string>()) << '\n';
+    std::string model =  std::format("Model: {}", res["model"].get<std::string>());
+    std::string message = std::format("Message: {}", res["choices"][0]["message"]["content"].get<std::string>());
+
+    std::cout << model << '\n';
+    std::cout << message << '\n';
 
   } catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << '\n';
